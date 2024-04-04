@@ -164,6 +164,37 @@ async function run() {
       const remove = await blogCollection.deleteOne(query);
       res.send(remove);
     });
+
+    //Get Specific Id Data
+    app.get("/blog/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await blogCollection.findOne(query);
+      res.send(result);
+    });
+
+    //Update a spechific  data from mongodb
+
+    app.put("/blog/:id", async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+      const options = { upsert: true };
+      const data = req.body;
+
+      const updateData = {
+        $set: {
+          title: data.title,
+          description: data.description,
+        },
+      };
+
+      const result = await blogCollection.updateOne(
+        filter,
+        updateData,
+        options
+      );
+      res.send(result);
+    });
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();

@@ -51,22 +51,22 @@ const Sidebar = () => {
         <div>
           {/* Branding & Profile Info */}
 
-          <div className="flex flex-col text-white items-center mt-4  border border-blue-400  rounded-lg shadow-xl px-4 gap-4 h-[100px] bg-blue-700">
+          <div className="flex  flex-col text-white bg-gradient-to-r from-blue-800 to-indigo-900 items-center mt-4  border-2 border-slate-600  rounded-lg shadow-xl px-8 gap-2 h-[100px] ">
             <h1 className="text-2xl font-bold font-Livvic">Admin</h1>
             <div className="text-center">
               <Link to="/dashboard">
-                <h4 className="mx-2 mt-2 text-2xl font-bold   hover:underline">
+                <h4 className=" mt-2 text-xl font-bold   hover:underline">
                   {user?.displayName}
                 </h4>
               </Link>
-              <Link to="/dashboard">
+              {/* <Link to="/dashboard">
                 <p className=" mx-2 mt-1 text-lg font-medium   hover:underline">
                   {user?.email}
                 </p>
-              </Link>
+              </Link> */}
             </div>
 
-            <div>
+            <div className="my-6">
               <NavLink
                 to="/dashboard/add-blog"
                 className={({ isActive }) =>

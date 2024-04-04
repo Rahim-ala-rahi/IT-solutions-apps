@@ -15,12 +15,15 @@ const Navbar = () => {
     <>
       <Container>
         <nav className="flex flex-wrap items-center justify-around ">
-          <img
+          {/* <img
             src="/public/bd it.png"
             className="h-16 w-32"
             alt="ACME"
             width="120"
-          />
+          /> */}
+          <h1 className="h-16 w-32 font-bold text-blue-800 text-2xl xl:lg:md:pt-4">
+            Paradigmitsolutions
+          </h1>
           <div className="flex md:hidden">
             <button id="hamburger" onClick={toggleMenu}>
               {isMenuOpen ? (

@@ -20,6 +20,7 @@ import Navbar from "../components/Shared/Navbar";
 import AdminLayout from "../Layout/AdminLayout";
 import AddBlogs from "../Dashboard/AddBlogs/AddBlogs";
 import Displayblog from "../Dashboard/DisplayBlog/Displayblog";
+import UpdateBlog from "../Dashboard/DisplayBlog/UpdateBlog";
 
 const router = createBrowserRouter([
   {
@@ -115,6 +116,16 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/display-blogs",
         element: <Displayblog />,
+      },
+      {
+        path: "/dashboard/display-blogs/update",
+        element: <UpdateBlog />,
+      },
+      {
+        path: "/dashboard/display-blogs/:id",
+        element: <UpdateBlog />,
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API_URL}/blog/${params.id}`),
       },
     ],
   },

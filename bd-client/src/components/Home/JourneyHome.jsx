@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const JourneyHome = () => {
   return (
@@ -14,9 +15,12 @@ const JourneyHome = () => {
               our On-demand trainings today or get in touch with us on our
               Contact page.
             </h3>
-            <button className="pb button text-[16px] font-Livvic border  border-white mt-[40px] bg-white text-blue-700">
+            <Link
+              to={`/career`}
+              className="pb button text-[16px] font-Livvic border  border-white mt-[40px] bg-white text-blue-700"
+            >
               START YOUR JOURNEY
-            </button>
+            </Link>
           </div>
         </div>
       </div>

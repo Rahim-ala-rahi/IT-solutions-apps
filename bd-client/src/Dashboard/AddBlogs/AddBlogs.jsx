@@ -19,8 +19,8 @@ const AddBlogs = () => {
     setLoading(true);
 
     const title = event.target.title.value;
-    const name = event.target.name.value;
-    const email = event.target.email.value;
+    // const name = event.target.name.value;
+    // const email = event.target.email.value;
     const description = event.target.description.value;
 
     const image = event.target.image.files[0];
@@ -32,23 +32,22 @@ const AddBlogs = () => {
           image: data.data.display_url,
 
           title,
-          email,
 
           description,
         };
-        console.log(blogData);
+
         //save room to dataBase
         axiosSecure
           .post(`/blogs`, {
-            name,
+            // name,
             title,
             image: data.data.display_url,
-            email,
+            // email,
             description,
           })
           .then((res) => {
             toast.success("Add blog successfully");
-            console.log(res.data);
+            alert("Add blog successfully");
             formRef.current.reset();
           })
           .catch((err) => {
@@ -77,7 +76,7 @@ const AddBlogs = () => {
           onSubmit={handleSubmit}
           className="grid grid-cols-2 gap-4 max-w-6xl m-auto"
         >
-          <div className="col-span-2 lg:col-span-1">
+          {/* <div className="col-span-2 lg:col-span-1">
             <input
               type="text"
               className="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
@@ -93,12 +92,12 @@ const AddBlogs = () => {
               placeholder="Email Address"
               name="email"
             />
-          </div>
+          </div> */}
           <div className="col-span-2 lg:col-span-1 pt-6">
             <input
               type="text"
-              className="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
-              placeholder="blog title"
+              className="border-solid border-gray-400 border-2 p-3 md:text-xl w-full rounded-lg"
+              placeholder="Add blog title here"
               name="title"
             />
           </div>
@@ -130,7 +129,7 @@ const AddBlogs = () => {
             <textarea
               cols="30"
               rows="8"
-              className="border-solid border-gray-400 border-2 p-3 md:text-xl w-full"
+              className="border-solid border-gray-400 border-2 p-3 md:text-xl w-full rounded-lg"
               placeholder="Blog Description"
               name="description"
             ></textarea>

@@ -19,7 +19,9 @@ const Footer = () => {
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
               <div>
                 <div>
-                  <img src="/Bd It.png" alt="" />
+                  <h1 className="h-16 w-32 font-bold text-blue-800 text-2xl xl:lg:md:pt-4">
+                    Paradigmitsolutions
+                  </h1>
                 </div>
 
                 <div className="flex flex-col items-start mt-5 space-y-2">

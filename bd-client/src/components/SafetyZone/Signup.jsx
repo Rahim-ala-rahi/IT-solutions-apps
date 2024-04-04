@@ -2,7 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ImSpinner4 } from "react-icons/im";
 import { FcGoogle } from "react-icons/fc";
 import { useContext } from "react";
-import toast, { Toaster } from "react-hot-toast";
+
 import { AuthContext } from "../../Providers/AuthProvider";
 import admin from "../../assets/admin/admin.jpg";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
@@ -39,7 +39,7 @@ const Signup = () => {
       await updateUserProfile(name, photo); // Await updateUserProfile
 
       // Save the user to the database or perform any other actions here
-      toast.success(`Sign up successful`);
+      alert(`Sign up successful`);
 
       const currentUser = {
         email: loggedUser?.email,

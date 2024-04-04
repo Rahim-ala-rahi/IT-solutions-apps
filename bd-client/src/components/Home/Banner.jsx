@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -17,9 +18,12 @@ const Banner = () => {
               We're Cloud Focus and Automation ready to help your team through
               Data Modernization and Migration projects.
             </h3>
-            <button className="pb button text-[16px] font-Livvic border  border-white mt-[40px] bg-white text-blue-700">
+            <Link
+              to={`/about`}
+              className="pb button text-[16px] font-Livvic border  border-white mt-[40px] bg-white text-blue-700"
+            >
               Learn More
-            </button>
+            </Link>
           </div>
         </div>
       </div>

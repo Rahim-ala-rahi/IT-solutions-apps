@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaDeleteLeft } from "react-icons/fa6";
 
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import DeleteModal from "../Modal/DeleteModal";
+import UpdateModal from "../Modal/UpdateModal";
+import MyDialog from "../Modal/Mydialog";
+import { Link } from "react-router-dom";
 
 const TableBlogMange = ({ blog, refetch, index }) => {
   const [axiosSecure] = useAxiosSecure();
 
-  const handleDeleteBlog = (id) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const modalHandler = () => {
     axiosSecure
-      .delete(`/blog/${id}`)
+      .delete(`/blog/${blog?._id}`)
       .then((res) => {
         refetch();
         console.log("Delete Successfull");
@@ -18,6 +30,7 @@ const TableBlogMange = ({ blog, refetch, index }) => {
       .catch((error) => {
         console.error("Error updating user:", error);
       });
+    closeModal();
   };
 
   return (
@@ -33,23 +46,33 @@ const TableBlogMange = ({ blog, refetch, index }) => {
             alt=""
           />
         </td>
-        <td className="whitespace-nowrap px-6 py-4 font-semibold text-xl">
-          {blog?.name}
-        </td>
+        <td className=" px-6 py-4 font-semibold  w-18">{blog?.title}</td>
         <td className=" w-[600px]  px-6 py-4 text-lg hover:text-green-600">
           {blog?.description.slice(0, 120)}....
         </td>
         <td className="whitespace-nowrap px-6 py-4  text-md">
-          <button className="border border-blue-700 px-4 py-1 rounded-lg hover:bg-green-200">
+          <Link
+            to={`/dashboard/display-blogs/${blog?._id}`}
+            // onClick={openModal}
+            className="border border-blue-700 px-4 py-1 rounded-lg hover:bg-green-200"
+          >
             Update
-          </button>
+          </Link>
         </td>
 
         <td
-          onClick={() => handleDeleteBlog(blog?._id)}
+          // onClick={() => handleDeleteBlog(blog?._id)}
+          onClick={openModal}
           className="whitespace-nowrap px-6 py-4 text-2xl hover:text-red-600"
         >
           <FaDeleteLeft />
+          {/* modalHandler, closeModal, isOpen, id */}
+          <DeleteModal
+            modalHandler={modalHandler}
+            closeModal={closeModal}
+            isOpen={isOpen}
+            id={blog?._id}
+          />
         </td>
       </tr>
     </>

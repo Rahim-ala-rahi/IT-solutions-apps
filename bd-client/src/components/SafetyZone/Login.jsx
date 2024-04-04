@@ -25,8 +25,10 @@ const Login = () => {
         // console.log(result.user);
         if (identity == "admin") {
           navigate(`/dashboard/manage_user`);
+          alert(`Admin is Login`);
         } else {
           navigate(`/admin/login`);
+          alert(`Not an Admin !!!`);
         }
       })
       .catch((err) => {

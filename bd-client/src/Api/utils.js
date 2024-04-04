@@ -6,7 +6,7 @@ export const uploadImage = async (image) => {
   const imgURL = `https://api.imgbb.com/1/upload?key=${
     import.meta.env.VITE_IMGBB_KEY
   }`;
-  console.log(imgURL);
+  // console.log(imgURL);
   const response = await fetch(imgURL, {
     method: "POST",
     body: formData,
